@@ -43,6 +43,12 @@ public class ObraController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Obra> putObra(@PathVariable Integer id, @RequestBody Obra obra){
+        obra.setId(id);
+        return ResponseEntity.ok(obraRepository.save(obra));
+    }
+
     @DeleteMapping("/{id}")
     public void deleteObraById(@PathVariable Integer id){
         obraRepository.deleteById(id);
