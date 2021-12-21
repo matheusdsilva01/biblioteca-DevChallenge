@@ -38,7 +38,6 @@ public class ObraController {
             throw new NoSuchElementException("Autor não encontrado");
         }
         catch (NumberFormatException e){
-            e.getMessage();
             throw new NumberFormatException("Id inválido, preencha corretamente");
         }
     }
