@@ -1,7 +1,11 @@
 package com.matheuss.biblioteca.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Autor {
@@ -9,9 +13,9 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "obra_id")
-    private Obra obras;
+    @ManyToMany(mappedBy = "autores")
+    @JsonIgnoreProperties("autores")
+    private List<Obra> obras = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -29,11 +33,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public Obra getObras() {
+    public List<Obra> getObras() {
         return obras;
     }
 
-    public void setObras(Obra obras) {
+    public void setObras(List<Obra> obras) {
         this.obras = obras;
     }
 }
