@@ -16,7 +16,7 @@ public class Obra {
     private String titulo;
     private String editora;
     private String foto;
-    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_autor")
     @JsonIgnoreProperties("obras")
     private List<Autor> autores = new ArrayList<>();
